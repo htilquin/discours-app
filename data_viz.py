@@ -113,13 +113,6 @@ def words_in_cloud(corpus, text, default_color="grey", highlight_color="red", ma
     # Apply our color function
     wc.recolor(color_func=grouped_color_func)
 
-    # Plot
-    # plt.figure(figsize=(16,9))
-    # plt.imshow(wc, interpolation="bilinear")
-    # plt.text(s=predicted_typo.upper(), x=300, y=216, ha="center", ma="center", fontsize=18, fontweight="ultralight")
-    # plt.axis("off")
-    # plt.show()
-
     fig, ax = plt.subplots(figsize=(16,9))
     ax.imshow(wc, interpolation="bilinear")
     ax.text(s=predicted_typo.upper(), x=300, y=216, ha="center", ma="center", fontsize=18, fontweight="ultralight")
@@ -146,7 +139,7 @@ def viz_from_pred(df_train, text_a_predire, model, k=-1, threshold=0.3) :
         st.write("{} : {:.4} %".format(label, rate*100))
 
         corpus = corpus_from_df(df_train, label)
-        words_in_cloud(corpus, text_a_predire, mask=logo_mask, font_path="fonts/LiberationSans-Bold.ttf", predicted_typo=label)
+        words_in_cloud(corpus, text_a_predire, mask=logo_mask, font_path="LiberationSans-Bold.ttf", predicted_typo=label)
         
     if len(prediction_text[0]) == 0 :
         st.write(f"Pas de prédiction avec cette limite de {threshold*100} %.")
