@@ -87,7 +87,6 @@ pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pybind11==2.6.2
 pycparser==2.20
-pycurl==7.43
 pydeck==0.6.2
 pydot==1.4.2
 pydotplus==2.0.2
