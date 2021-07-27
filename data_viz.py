@@ -130,7 +130,7 @@ def corpus_from_df(df, typology = "Interview", rows=None):
     
     return corpus
 
-def viz_from_pred(df_train, text_a_predire, model, k=-1, threshold=0.3) :
+def viz_from_pred(df_train, text_a_predire, model, k=-1, threshold=0.3, display=True) :
     prediction_text = model.predict(text_a_predire, k=k, threshold=threshold)
     
     for i in range(len(prediction_text[0])):
@@ -138,8 +138,9 @@ def viz_from_pred(df_train, text_a_predire, model, k=-1, threshold=0.3) :
         rate = prediction_text[1][i]
         st.write("{} : {:.4} %".format(label, rate*100))
 
-        corpus = corpus_from_df(df_train, label)
-        words_in_cloud(corpus, text_a_predire, mask=logo_mask, font_path="LiberationSans-Bold.ttf", predicted_typo=label)
+        if display :
+            corpus = corpus_from_df(df_train, label)
+            words_in_cloud(corpus, text_a_predire, mask=logo_mask, font_path="LiberationSans-Bold.ttf", predicted_typo=label)
         
     if len(prediction_text[0]) == 0 :
         st.write(f"Pas de prédiction avec cette limite de {threshold*100} %.")
